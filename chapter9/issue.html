@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <ul id="result">
+
+  </ul>
+  <script>
+    "use strict"
+    
+    function it(value, desc) {
+      var li = document.createElement("li");
+      li.style.color = value ? "blue" : "red";
+      li.appendChild(document.createTextNode(desc));
+      document.getElementById("result").appendChild(li);
+    }
+
+
+    // 全局作用域
+    it(eval("5+5") === 10, "5 and 5 is 10");
+
+    it(eval("var ninja = 5;") === undefined, "no value was return");
+
+    it(ninja == 5, "the variable ninja was created");
+
+    // console.log(window.ninja);
+
+    // 局部函数作用域
+    (function () {
+      eval("var ninja = 6;");
+
+      it(ninja === 6, "evaluated within the current scope");
+    })();
+
+    it(window.ninja === 5, "the global scope was unaffected");
+
+    it(ninja === 5, "the global scope was unaffected");
+  </script>
+</body>
+
+</html>

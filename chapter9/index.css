@@ -1,0 +1,7 @@
+#result li{
+  font-size: 20px;
+}
+
+li.error{
+  text-decoration: line-through;
+}
